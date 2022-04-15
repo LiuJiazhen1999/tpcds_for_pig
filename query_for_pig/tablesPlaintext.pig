@@ -413,6 +413,7 @@ DEFINE call_center() RETURNS A {
 
 DEFINE catalog_returns() RETURNS A {
   $A = LOAD '$input_path/catalog_returns.dat' USING PigStorage('|') AS (
+	  cr_returned_date_sk      :biginteger,
 	  cr_returned_time_sk      :biginteger,
       cr_item_sk               :biginteger,
       cr_refunded_customer_sk  :biginteger,
