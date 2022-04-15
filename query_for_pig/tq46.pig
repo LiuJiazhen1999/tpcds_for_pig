@@ -39,7 +39,7 @@ F2 = FOREACH FJ6 GENERATE
 	c_last_name,
 	c_first_name,
 	ca_city,
-	bought_city,
+	F1.bought_city,
 	ss_ticket_number,
 	amt,
 	profit;
