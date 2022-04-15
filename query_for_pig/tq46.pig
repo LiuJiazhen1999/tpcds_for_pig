@@ -30,19 +30,18 @@ F1 = FOREACH G1 GENERATE
 	
 J5 = JOIN F1 BY ss_customer_sk, C BY c_customer_sk;
 J6 = JOIN J5 BY c_current_addr_sk, CA BY ca_address_sk;
-C1 = CROSS F1, J6;
 
 
-FJ6 = FILTER C1 BY ca_city != F1.bought_city;
+FJ6 = FILTER J6 BY ca_city != F1.bought_city;
 
 F2 = FOREACH FJ6 GENERATE
 	c_last_name,
 	c_first_name,
 	ca_city,
-	F1.bought_city,
-	F1.ss_ticket_number,
-	F1.amt,
-	F1.profit;
+	bought_city,
+	ss_ticket_number,
+	amt,
+	profit;
 
 O1 = ORDER F2 BY c_last_name,
 	c_first_name,
