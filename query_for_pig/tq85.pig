@@ -48,10 +48,9 @@ FJ7 = FILTER J7 BY cd1_marital_status == cd2_marital_status
 		OR (ws_net_profit >= 150 AND ws_net_profit <= 300 AND (ca_state == 'MT' OR ca_state == 'OR' OR ca_state == 'IN'))
 		OR (ws_net_profit >= 50 AND ws_net_profit <= 250 AND (ca_state == 'WI' OR ca_state == 'MO' OR ca_state == 'MV')));
 
-G1 = GROUP FJ7 BY r_reason_desc;
+G1 = GROUP FJ7 BY (r_reason_desc);
 
 F1 = FOREACH G1 GENERATE
-	group.r_reason_desc,
 	SUBSTRING(group.r_reason_desc, 1, 20) AS sub_r_reason_desc,
 	AVG(FJ7.ws_quantity) AS avg_ws_quantity,
 	AVG(FJ7.wr_refunded_cash) AS avg_wr_refunded_cash,
