@@ -40,9 +40,9 @@ F2 = FOREACH FJ6 GENERATE
 	c_first_name,
 	ca_city,
 	F1.bought_city,
-	ss_ticket_number,
-	amt,
-	profit;
+	F1.ss_ticket_number,
+	F1.amt,
+	F1.profit;
 
 O1 = ORDER F2 BY c_last_name,
 	c_first_name,
