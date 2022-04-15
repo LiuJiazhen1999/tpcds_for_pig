@@ -18,7 +18,7 @@ J3 = JOIN J2 BY c_current_hdemo_sk, HD BY hd_demo_sk;
 J4 = JOIN J3 BY hd_income_band_sk, FIB BY ib_income_band_sk;
 J5 = JOIN J4 BY cd_demo_sk, SR BY sr_cdemo_sk;
 
-F1 = FOREACH J5 GENERATE c_customer_id as customer_id, CONCAT(c_last_name, c_first_name) as customername;
+F1 = FOREACH J5 GENERATE c_customer_id, CONCAT(c_last_name, c_first_name) as customername;
 
 O1 = ORDER F1 BY c_customer_id;
 
