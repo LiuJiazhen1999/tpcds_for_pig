@@ -299,7 +299,7 @@ DEFINE web_sales() RETURNS A {
       ws_net_paid_inc_tax      :chararray,
       ws_net_paid_inc_ship     :chararray,
       ws_net_paid_inc_ship_tax :chararray,
-      ws_net_profit            :chararray);
+      ws_net_profit            :double);
 };
 
 DEFINE time_dim() RETURNS A {
