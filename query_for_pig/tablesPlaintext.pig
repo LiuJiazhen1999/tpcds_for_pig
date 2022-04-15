@@ -4,7 +4,7 @@ DEFINE customer() RETURNS A {
   $A = LOAD '$input_path/customer.dat' USING PigStorage('|') AS (
     c_customer_sk			:biginteger,
     c_customer_id			:chararray,
-    c_current_cdemo_sk		:biginteger
+    c_current_cdemo_sk		:biginteger,
     c_current_hdemo_sk		:biginteger,
     c_current_addr_sk		:biginteger,
     c_first_shipto_date_sk	:biginteger,
