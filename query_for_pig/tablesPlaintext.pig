@@ -1,7 +1,7 @@
-%default input_path '/tpcds/input'
+%default input_path 's3a://inputtpcds50'
 
 DEFINE customer() RETURNS A {
-  $A = LOAD '$input_path/customer' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/customer.dat' USING PigStorage('|') AS (
     c_customer_sk			:biginteger,
     c_customer_id			:chararray,
     c_current_cdemo_sk		:biginteger
@@ -23,7 +23,7 @@ DEFINE customer() RETURNS A {
 };
 
 DEFINE customer_address() RETURNS A {
-  $A = LOAD '$input_path/customer_address' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/customer_address.dat' USING PigStorage('|') AS (
     ca_address_sk		:biginteger,
     ca_address_id		:chararray,
     ca_street_number	:chararray,
@@ -40,7 +40,7 @@ DEFINE customer_address() RETURNS A {
 };
 
 DEFINE customer_demographics() RETURNS A {
-  $A = LOAD '$input_path/customer_demographics' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/customer_demographics.dat' USING PigStorage('|') AS (
     cd_demo_sk				:biginteger,
     cd_gender				:chararray,
     cd_marital_status		:chararray,
@@ -53,7 +53,7 @@ DEFINE customer_demographics() RETURNS A {
 };
 
 DEFINE date_dim() RETURNS A {
-  $A = LOAD '$input_path/date_dim' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/date_dim.dat' USING PigStorage('|') AS (
     d_date_sk			:biginteger,
     d_date_id			:chararray,
     d_date				:chararray,
@@ -85,7 +85,7 @@ DEFINE date_dim() RETURNS A {
 };
 
 DEFINE household_demographics() RETURNS A {
-  $A = LOAD '$input_path/household_demographics' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/household_demographics.dat' USING PigStorage('|') AS (
     hd_demo_sk			:biginteger,
     hd_income_band_sk	:biginteger,
     hd_buy_potential	:chararray,
@@ -94,7 +94,7 @@ DEFINE household_demographics() RETURNS A {
 };
 
 DEFINE item() RETURNS A {
-  $A = LOAD '$input_path/item' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/item.dat' USING PigStorage('|') AS (
     i_item_sk			:biginteger,
     i_item_id			:chararray,
     i_rec_start_date	:chararray,
@@ -120,7 +120,7 @@ DEFINE item() RETURNS A {
 };
 
 DEFINE promotion() RETURNS A {
-  $A = LOAD '$input_path/promotion' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/promotion.dat' USING PigStorage('|') AS (
     p_promo_sk			:biginteger,
     p_promo_id			:chararray,
     p_start_date_sk		:biginteger,
@@ -143,7 +143,7 @@ DEFINE promotion() RETURNS A {
 };
 
 DEFINE stores() RETURNS A {
-  $A = LOAD '$input_path/store' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/store.dat' USING PigStorage('|') AS (
     s_store_sk			:biginteger,
     s_store_id			:chararray,
     s_rec_start_date	:chararray,
@@ -176,7 +176,7 @@ DEFINE stores() RETURNS A {
 };
 
 DEFINE store_sales() RETURNS A {
-  $A = LOAD '$input_path/store_sales' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/store_sales.dat' USING PigStorage('|') AS (
     ss_sold_date_sk			:biginteger,
     ss_sold_time_sk			:biginteger,
     ss_item_sk				:biginteger,
@@ -203,7 +203,7 @@ DEFINE store_sales() RETURNS A {
 };
 
 DEFINE store_returns() RETURNS A {
-  $A = LOAD '$input_path/store_returns' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/store_returns.dat' USING PigStorage('|') AS (
 	  sr_returned_date_sk  	:biginteger,
       sr_return_time_sk    	:biginteger,
       sr_item_sk           	:biginteger,
@@ -227,7 +227,7 @@ DEFINE store_returns() RETURNS A {
 };
 
 DEFINE catalog_sales() RETURNS A {
-  $A = LOAD '$input_path/catalog_sales' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/catalog_sales.dat' USING PigStorage('|') AS (
     cs_sold_date_sk 			:biginteger,
 	cs_sold_time_sk 			:biginteger,
 	cs_ship_date_sk 			:biginteger,
@@ -265,7 +265,7 @@ DEFINE catalog_sales() RETURNS A {
 };
 
 DEFINE web_sales() RETURNS A {
-  $A = LOAD '$input_path/web_sales' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/web_sales.dat' USING PigStorage('|') AS (
      ws_sold_date_sk          :biginteger,
       ws_sold_time_sk          :biginteger,
       ws_ship_date_sk          :biginteger,
@@ -303,7 +303,7 @@ DEFINE web_sales() RETURNS A {
 };
 
 DEFINE time_dim() RETURNS A {
-  $A = LOAD '$input_path/time_dim' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/time_dim.dat' USING PigStorage('|') AS (
       t_time_sk                 :biginteger,
       t_time_id                 :chararray,
       t_time                    :biginteger,
@@ -317,14 +317,14 @@ DEFINE time_dim() RETURNS A {
 };
 
 DEFINE income_band() RETURNS A {
-  $A = LOAD '$input_path/income_band' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/income_band.dat' USING PigStorage('|') AS (
       ib_income_band_sk         :biginteger,
       ib_lower_bound            :biginteger,
       ib_upper_bound            :biginteger);
 };
 
 DEFINE web_returns() RETURNS A {
-  $A = LOAD '$input_path/web_returns' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/web_returns.dat' USING PigStorage('|') AS (
       wr_returned_date_sk      :biginteger,
       wr_returned_time_sk      :biginteger,
       wr_item_sk               :biginteger,
@@ -352,7 +352,7 @@ DEFINE web_returns() RETURNS A {
 };
 
 DEFINE web_page() RETURNS A {
-  $A = LOAD '$input_path/web_page' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/web_page.dat' USING PigStorage('|') AS (
       wp_web_page_sk           :biginteger,
       wp_web_page_id           :chararray,
       wp_rec_start_date        :chararray,
@@ -370,14 +370,14 @@ DEFINE web_page() RETURNS A {
 };
 
 DEFINE reason() RETURNS A {
-  $A = LOAD '$input_path/reason' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/reason.dat' USING PigStorage('|') AS (
 	  r_reason_sk               :biginteger,
       r_reason_id               :chararray,
       r_reason_desc             :chararray);
 };
 
 DEFINE call_center() RETURNS A {
-  $A = LOAD '$input_path/call_center' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/call_center.dat' USING PigStorage('|') AS (
 	  cc_call_center_sk        :biginteger,
       cc_call_center_id        :chararray,
       cc_rec_start_date        :chararray,
@@ -412,7 +412,7 @@ DEFINE call_center() RETURNS A {
 };
 
 DEFINE catalog_returns() RETURNS A {
-  $A = LOAD '$input_path/catalog_returns' USING PigStorage('|') AS (
+  $A = LOAD '$input_path/catalog_returns.dat' USING PigStorage('|') AS (
 	  cr_returned_time_sk      :biginteger,
       cr_item_sk               :biginteger,
       cr_refunded_customer_sk  :biginteger,
