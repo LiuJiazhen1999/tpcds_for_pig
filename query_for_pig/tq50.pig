@@ -27,7 +27,7 @@ F1 = FOREACH G1 GENERATE
 	group.s_county,
 	group.s_state,
 	group.s_zip,
-	SUM(CASE WEHN (J4.sr_returned_date_sk - J4.ss_sold_date_sk <= 30 ) THEN 1 ELSE 0 END) AS day0,
+	SUM(CASE WEHN ((J4.sr_returned_date_sk - J4.ss_sold_date_sk) <= 30) THEN 1 ELSE 0 END) AS day0,
 	SUM(CASE WEHN ((J4.sr_returned_date_sk - J4.ss_sold_date_sk > 30) AND (J4.sr_returned_date_sk - J4.ss_sold_date_sk <= 60)) THEN 1 ELSE 0 END) AS day30,
 	SUM(CASE WEHN ((J4.sr_returned_date_sk - J4.ss_sold_date_sk > 60) AND (J4.sr_returned_date_sk - J4.ss_sold_date_sk <= 90)) THEN 1 ELSE 0 END) AS day60,
 	SUM(CASE WEHN ((J4.sr_returned_date_sk - J4.ss_sold_date_sk > 90) AND (J4.sr_returned_date_sk - J4.ss_sold_date_sk <= 120)) THEN 1 ELSE 0 END) AS day90,
