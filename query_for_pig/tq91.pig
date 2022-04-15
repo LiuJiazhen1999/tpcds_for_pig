@@ -11,7 +11,7 @@ CD = customer_demographics();
 HD = household_demographics();
 
 FD = FILTER D BY d_year == 1999 AND d_moy == 11;
-FCD = FILTER CD BY (cd_marital_status = 'M' AND cd_education_status = 'Unknown') OR (cd_marital_status = 'W' AND cd_education_status = 'Advanced Degree');
+FCD = FILTER CD BY (cd_marital_status == 'M' AND cd_education_status == 'Unknown') OR (cd_marital_status == 'W' AND cd_education_status == 'Advanced Degree');
 FHD = FILTER HD BY STARTSWITH(hd_buy_potential, '0-500');
 FCA = FILTER CA BY ca_gmt_offset == -7;
 
