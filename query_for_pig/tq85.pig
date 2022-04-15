@@ -51,7 +51,7 @@ FJ7 = FILTER J7 BY cd1_marital_status == cd2_marital_status
 G1 = GROUP FJ7 BY (r_reason_desc);
 
 F1 = FOREACH G1 GENERATE
-	SUBSTRING(group.r_reason_desc, 1, 20) AS sub_r_reason_desc,
+	SUBSTRING(group, 1, 20) AS sub_r_reason_desc,
 	AVG(FJ7.ws_quantity) AS avg_ws_quantity,
 	AVG(FJ7.wr_refunded_cash) AS avg_wr_refunded_cash,
 	AVG(FJ7.wr_fee) AS avg_wr_fee;
