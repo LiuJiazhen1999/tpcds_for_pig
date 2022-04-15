@@ -33,7 +33,7 @@ J6 = JOIN J5 BY c_current_addr_sk, CA BY ca_address_sk;
 C1 = CROSS F1, J6;
 
 
-FJ6 = FILTER C1 BY ca_city != bought_city;
+FJ6 = FILTER C1 BY ca_city != F1.bought_city;
 
 F2 = FOREACH FJ6 GENERATE
 	c_last_name,
