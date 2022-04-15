@@ -32,8 +32,7 @@ F1 = FOREACH G1 GENERATE
 	SUM(J7.sr_net_loss) AS store_returns_loss,
 	SUM(J7.cs_net_profit) AS catalog_sales_profit;
 
-O1 = ORDER F1 BY ext_price desc,
-	i_item_id,
+O1 = ORDER F1 BY i_item_id,
 	i_item_desc,
 	s_store_id,
 	s_store_name;
