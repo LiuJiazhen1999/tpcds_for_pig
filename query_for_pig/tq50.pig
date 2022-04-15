@@ -27,7 +27,7 @@ F1 = FOREACH G1 GENERATE
 	group.s_county,
 	group.s_state,
 	group.s_zip,
-	SUM(J4.sr_returned_date_sk - J4.ss_sold_date_sk);
+	SUM(J4.sr_returned_date_sk) as sum_sr_returned_date_sk;
 
 O1 = ORDER F1 BY s_store_name,
 	s_company_id,
