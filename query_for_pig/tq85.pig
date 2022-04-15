@@ -39,7 +39,7 @@ J5 = JOIN J4 BY wr_returning_cdemo_sk, FCD2 BY cd2_demo_sk;
 J6 = JOIN J5 BY wr_refunded_addr_sk, FCA BY ca_address_sk;
 J7 = JOIN J6 BY wr_reason_sk, R BY r_reason_sk;
 
-F1 = FILTER J7 BY cd1_marital_status == cd2_marital_status
+FJ7 = FILTER J7 BY cd1_marital_status == cd2_marital_status
 	AND cd1_education_status == cd2_education_status
 	AND ( (cd1_marital_status == 'M' AND cd1_education_status == '4 yr Degree' AND ws_sales_price >= 100.00 AND ws_sales_price <= 150.00)
 		OR (cd1_marital_status == 'D' AND cd1_education_status == 'Primary' AND ws_sales_price >= 50.00 AND ws_sales_price <= 100.00)
@@ -48,14 +48,15 @@ F1 = FILTER J7 BY cd1_marital_status == cd2_marital_status
 		OR (ws_net_profit >= 150 AND ws_net_profit <= 300 AND (ca_state == 'MT' OR ca_state == 'OR' OR ca_state == 'IN'))
 		OR (ws_net_profit >= 50 AND ws_net_profit <= 250 AND (ca_state == 'WI' OR ca_state == 'MO' OR ca_state == 'MV')));
 
-G1 = GROUP F1 BY r_reason_desc;
-F2 = FOREACH G1 GENERATE SUBSTRING (group.r_reason_desc, 1, 20) AS sub_r_reason_desc,
-	AVG(F1.ws_quantity) AS avg_ws_quantity,
-	AVG(F1.wr_refunded_cash) AS avg_wr_refunded_cash,
-	AVG(F1.wr_fee) AS avg_wr_fee;
+G1 = GROUP FJ7 BY r_reason_desc;
+
+F1 = FOREACH G1 GENERATE SUBSTRING(group.r_reason_desc, 1, 20) AS sub_r_reason_desc,
+	AVG(FJ7.ws_quantity) AS avg_ws_quantity,
+	AVG(FJ7.wr_refunded_cash) AS avg_wr_refunded_cash,
+	AVG(FJ7.wr_fee) AS avg_wr_fee;
 
 
-O1 = ORDER F2 BY sub_r_reason_desc,
+O1 = ORDER F1 BY sub_r_reason_desc,
 	avg_ws_quantity,
 	avg_wr_refunded_cash,
 	avg_wr_fee;
