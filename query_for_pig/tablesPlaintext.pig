@@ -287,7 +287,7 @@ DEFINE web_sales() RETURNS A {
       ws_quantity              :biginteger,
       ws_wholesale_cost        :chararray,
       ws_list_price            :chararray,
-      ws_sales_price           :chararray,
+      ws_sales_price           :double,
       ws_ext_discount_amt      :chararray,
       ws_ext_sales_price       :double,
       ws_ext_wholesale_cost    :chararray,
