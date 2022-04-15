@@ -343,9 +343,9 @@ DEFINE web_returns() RETURNS A {
       wr_return_amt            :chararray,
       wr_return_tax            :chararray,
       wr_return_amt_inc_tax    :chararray,
-      wr_fee                   :chararray,
+      wr_fee                   :biginteger,
       wr_return_ship_cost      :chararray,
-      wr_refunded_cash         :chararray,
+      wr_refunded_cash         :biginteger,
       wr_reversed_charge       :chararray,
       wr_account_credit        :chararray,
       wr_net_loss              :chararray);
