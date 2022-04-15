@@ -18,7 +18,7 @@ J2 = JOIN J1 BY ss_store_sk, FS BY s_store_sk;
 J3 = JOIN J2 BY ss_hdemo_sk, FHD BY hd_demo_sk;
 J4 = JOIN J3 BY ss_addr_sk, CA BY ca_address_sk;
 
-G1 = GROUP J7 BY (ss_ticket_number, ss_customer_sk, ss_addr_sk, ca_city);
+G1 = GROUP J4 BY (ss_ticket_number, ss_customer_sk, ss_addr_sk, ca_city);
 
 F1 = FOREACH G1 GENERATE
 	group.ss_ticket_number,
