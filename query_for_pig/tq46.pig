@@ -20,6 +20,7 @@ J4 = JOIN J3 BY ss_addr_sk, CA BY ca_address_sk;
 
 G1 = GROUP J4 BY (ss_ticket_number, ss_customer_sk, ss_addr_sk, ca_city);
 
+
 F1 = FOREACH G1 GENERATE
 	group.ss_ticket_number,
 	group.ss_customer_sk,
@@ -30,6 +31,7 @@ F1 = FOREACH G1 GENERATE
 J5 = JOIN F1 BY ss_customer_sk, C BY c_customer_sk;
 J6 = JOIN J5 BY c_current_addr_sk, CA BY ca_address_sk;
 C1 = CROSS F1, J6;
+
 
 FJ6 = FILTER C1 BY ca_city != bought_city;
 
