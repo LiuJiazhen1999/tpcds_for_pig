@@ -55,7 +55,7 @@ F2 = FOREACH G1 GENERATE SUBSTRING (group.r_reason_desc, 1, 20) AS sub_r_reason_
 	AVG(F1.wr_fee) AS avg_wr_fee;
 
 
-O1 = ORDER F1 BY sub_r_reason_desc,
+O1 = ORDER F2 BY sub_r_reason_desc,
 	avg_ws_quantity,
 	avg_wr_refunded_cash,
 	avg_wr_fee;
