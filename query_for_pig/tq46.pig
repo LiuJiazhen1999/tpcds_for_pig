@@ -24,7 +24,6 @@ F1 = FOREACH G1 GENERATE
 	group.ss_ticket_number,
 	group.ss_customer_sk,
 	group.ca_city AS bought_city,
-	group.s_store_name,
 	SUM(J4.ss_coupon_amt) AS amt,
 	SUM(J4.ss_net_profit) AS profit;
 	
