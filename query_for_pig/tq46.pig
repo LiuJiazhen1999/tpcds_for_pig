@@ -20,17 +20,15 @@ J4 = JOIN J3 BY ss_addr_sk, CA BY ca_address_sk;
 
 G1 = GROUP J4 BY (ss_ticket_number, ss_customer_sk, ss_addr_sk, ca_city);
 
-
 F1 = FOREACH G1 GENERATE
 	group.ss_ticket_number,
 	group.ss_customer_sk,
 	group.ca_city AS bought_city,
-	SUM(J4.ss_coupon_amt) AS amt,
-	SUM(J4.ss_net_profit) AS profit;
-	
+	SUM(ss_coupon_amt) AS amt,
+	SUM(ss_net_profit) AS profit;
+
 J5 = JOIN F1 BY ss_customer_sk, C BY c_customer_sk;
 J6 = JOIN J5 BY c_current_addr_sk, CA BY ca_address_sk;
-
 
 FJ6 = FILTER J6 BY ca_city != F1.bought_city;
 
