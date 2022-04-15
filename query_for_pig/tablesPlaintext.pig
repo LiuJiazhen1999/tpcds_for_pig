@@ -431,13 +431,13 @@ DEFINE catalog_returns() RETURNS A {
       cr_reason_sk             :biginteger,
       cr_order_number          :biginteger,
       cr_return_quantity       :biginteger,
-      cr_return_amount         :chararray,
-      cr_return_tax            :chararray,
-      cr_return_amt_inc_tax    :chararray,
-      cr_fee                   :chararray,
-      cr_return_ship_cost      :chararray,
-      cr_refunded_cash         :chararray,
-      cr_reversed_charge       :chararray,
-      cr_store_credit          :chararray,
-      cr_net_loss              :chararray);
+      cr_return_amount         :double,
+      cr_return_tax            :double,
+      cr_return_amt_inc_tax    :double,
+      cr_fee                   :double,
+      cr_return_ship_cost      :double,
+      cr_refunded_cash         :double,
+      cr_reversed_charge       :double,
+      cr_store_credit          :double,
+      cr_net_loss              :double);
 };
